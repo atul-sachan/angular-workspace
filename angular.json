@@ -3,5 +3,128 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "angular-app-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/angular-app-demo",
+      "sourceRoot": "projects/angular-app-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-app-demo",
+            "index": "projects/angular-app-demo/src/index.html",
+            "main": "projects/angular-app-demo/src/main.ts",
+            "polyfills": "projects/angular-app-demo/src/polyfills.ts",
+            "tsConfig": "projects/angular-app-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/angular-app-demo/src/favicon.ico",
+              "projects/angular-app-demo/src/assets"
+            ],
+            "styles": [
+              "projects/angular-app-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/angular-app-demo/src/environments/environment.ts",
+                  "with": "projects/angular-app-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-app-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-app-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-app-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-app-demo/src/test.ts",
+            "polyfills": "projects/angular-app-demo/src/polyfills.ts",
+            "tsConfig": "projects/angular-app-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-app-demo/karma.conf.js",
+            "assets": [
+              "projects/angular-app-demo/src/favicon.ico",
+              "projects/angular-app-demo/src/assets"
+            ],
+            "styles": [
+              "projects/angular-app-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-app-demo/tsconfig.app.json",
+              "projects/angular-app-demo/tsconfig.spec.json",
+              "projects/angular-app-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/angular-app-demo/e2e/protractor.conf.js",
+            "devServerTarget": "angular-app-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-app-demo:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "a72bf979-35d1-43ce-8708-e231f70ed57c"
+  },
+  "defaultProject": "angular-app-demo"
 }
