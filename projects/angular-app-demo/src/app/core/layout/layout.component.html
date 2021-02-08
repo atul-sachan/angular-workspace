@@ -1,11 +1,16 @@
 <div class="wrapper">
-  <app-header (toggleMenuSidebar)="toggleMenuSidebar()"></app-header>
-  <app-menu-sidebar
-    (mainSidebarHeight)="mainSidebarHeight($event)"
-  ></app-menu-sidebar>
-  <div class="content-wrapper">
-    <router-outlet></router-outlet>
-  </div>
-  <app-footer></app-footer>
-  <div id="sidebar-overlay" (click)="toggleMenuSidebar()"></div>
+    <app-layout-header (toggleMenuSidebar)="toggleMenuSidebar()" (toggleControlSidebar)="toggleControlSidebar()">
+    </app-layout-header>
+    <app-layout-main-sidebar (mainSidebarHeight)="mainSidebarHeight($event)"></app-layout-main-sidebar>
+    <div #contentWrapper class="content-wrapper">
+        <app-layout-breadcrumb></app-layout-breadcrumb>
+        <section class="content">
+            <div class="container-fluid">
+                <p>layout works!</p>
+            </div>
+        </section>
+    </div>
+    <app-layout-footer></app-layout-footer>
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+    <div id="sidebar-overlay" (click)="toggleMenuSidebar()"></div>
 </div>
