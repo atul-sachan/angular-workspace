@@ -10,26 +10,28 @@ import { MessagesDropdownMenuComponent } from './layout/header/messages-dropdown
 import { NotificationsDropdownMenuComponent } from './layout/header/notifications-dropdown-menu/notifications-dropdown-menu.component';
 import { UserDropdownMenuComponent } from './layout/header/user-dropdown-menu/user-dropdown-menu.component';
 import { BreadcrumbComponent } from './layout/breadcrumb/breadcrumb.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
 @NgModule({
   declarations: [
-    LayoutComponent, 
-    FooterComponent, 
-    HeaderComponent, 
-    MainSidebarComponent, 
+    LayoutComponent,
+    FooterComponent,
+    HeaderComponent,
+    MainSidebarComponent,
     MessagesDropdownMenuComponent,
     NotificationsDropdownMenuComponent,
     UserDropdownMenuComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule
   ],
-  exports: [LayoutComponent]
+  exports: [LayoutComponent, NotFoundComponent]
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders<NgModule> {
