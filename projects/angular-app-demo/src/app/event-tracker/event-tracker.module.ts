@@ -10,6 +10,9 @@ import { EventDetailsComponent } from './components/event-details/event-details.
 import { EventCreateComponent } from './components/event-create/event-create.component';
 import { EventRouteActivatorGuard } from './services/event-route-activator.guard';
 import { EventListResolver } from './services/event-list-resolver.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './components/create-session/create-session.component';
+import { SessionListComponent } from './components/session-list/session-list.component';
 
 
 
@@ -19,10 +22,14 @@ import { EventListResolver } from './services/event-list-resolver.service';
     EventListComponent,
     EventThumbnailComponent,
     EventDetailsComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(),
     EventTrackerRoutingModule
   ],
@@ -42,4 +49,5 @@ export function checkDirtyState(component: EventCreateComponent): any {
   if (component.isDirty) {
     return window.confirm('You have not saved this event, do you really want to cancel?');
   }
+  return true;
 }

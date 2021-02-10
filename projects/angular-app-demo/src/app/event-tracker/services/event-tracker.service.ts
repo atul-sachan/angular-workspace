@@ -18,6 +18,18 @@ export class EventTrackerService {
   getEvent(id: number): IEvent {
     return EVENTS.find(event => event.id === id);
   }
+
+  saveEvent(event): void {
+    event.id = 999;
+    event.session = [];
+    EVENTS.push(event);
+  }
+
+  updateEvent(event): void {
+    const index = EVENTS.findIndex(x => x.id = event.id);
+    EVENTS[index] = event;
+  }
+
 }
 
 const EVENTS: IEvent[] = [
